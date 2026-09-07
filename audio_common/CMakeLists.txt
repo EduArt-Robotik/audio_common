@@ -32,6 +32,7 @@ install(TARGETS
 
 # audio_player_node
 add_executable(audio_player_node
+  src/audio_common/sample_rate_converter.cpp
   src/audio_common/audio_player_node.cpp
   src/audio_player_main.cpp
 )
