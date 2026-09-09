@@ -107,8 +107,15 @@ install(DIRECTORY include/
 )
 
 if(BUILD_TESTING)
+  find_package(ament_cmake_gtest REQUIRED)
   find_package(ament_cmake_clang_format REQUIRED)
   ament_clang_format(CONFIG_FILE .clang-format)
+
+  ament_add_gtest(sample_rate_converter_test
+    test/sample_rate_converter_test.cpp
+    src/audio_common/sample_rate_converter.cpp
+  )
+  target_include_directories(sample_rate_converter_test PRIVATE include)
 endif()
 
 ament_export_dependencies(${DEPENDENCIES})
