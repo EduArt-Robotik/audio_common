@@ -39,8 +39,8 @@ namespace audio_common {
  *        through a PortAudio output device.
  *
  * One PortAudio stream is opened per unique combination of input sample format,
- * input sample rate, input channel count, output sample rate, and output channel
- * count. Mono/stereo channel conversion and sample-rate conversion are
+ * input sample rate, input channel count, output sample rate, and output
+ * channel count. Mono/stereo channel conversion and sample-rate conversion are
  * performed automatically when the incoming audio differs from the configured
  * output format.
  *
@@ -111,13 +111,13 @@ private:
 
   /**
    * @brief Write a block of typed audio samples to a PortAudio stream,
-    *        performing channel and sample-rate conversion when necessary.
+   *        performing channel and sample-rate conversion when necessary.
    *
    * @tparam ContainerT Container type of the input sample buffer (e.g.
    *                    std::vector<int16_t>).
    * @param data        Input sample buffer received from the ROS 2 message.
    * @param channels    Channel count of the incoming @p data.
-  * @param rate        Sample rate of the incoming @p data.
+   * @param rate        Sample rate of the incoming @p data.
    * @param chunk       Number of frames in @p data.
    * @param stream_key  Key used to look up the target stream in #stream_dict_.
    */

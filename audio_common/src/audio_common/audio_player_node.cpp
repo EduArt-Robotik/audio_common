@@ -122,8 +122,7 @@ void AudioPlayerNode::audio_callback(
                         : static_cast<int>(device_info->defaultSampleRate);
 
   if (msg->audio.info.rate <= 0 || output_rate <= 0) {
-    RCLCPP_ERROR(this->get_logger(),
-                 "Invalid sample rate: input=%d, output=%d",
+    RCLCPP_ERROR(this->get_logger(), "Invalid sample rate: input=%d, output=%d",
                  msg->audio.info.rate, output_rate);
     return;
   }
@@ -144,13 +143,12 @@ void AudioPlayerNode::audio_callback(
     outputParameters.suggestedLatency = device_info->defaultHighOutputLatency;
     outputParameters.hostApiSpecificStreamInfo = nullptr;
 
-    PaError err =
-        Pa_IsFormatSupported(nullptr, &outputParameters, output_rate);
+    PaError err = Pa_IsFormatSupported(nullptr, &outputParameters, output_rate);
 
     if (err != paFormatIsSupported) {
       RCLCPP_ERROR(this->get_logger(),
-                   "Output device %d does not support %d Hz: %s",
-                   output_device, output_rate, Pa_GetErrorText(err));
+                   "Output device %d does not support %d Hz: %s", output_device,
+                   output_rate, Pa_GetErrorText(err));
       return;
     }
 
